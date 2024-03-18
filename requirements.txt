@@ -1,5 +1,5 @@
 seaborn
-tensorflow==2.10
+tensorflow
 opencv-python
 matplotlib
 numpy
