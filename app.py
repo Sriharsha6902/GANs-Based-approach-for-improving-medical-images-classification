@@ -57,7 +57,7 @@ def main():
         else:
             st.write("Prediction: Pneumonia")
     else :
-        print("Please upload the correct file extension")
+        st.write("Please upload the correct file extension")
 
 if __name__ == "__main__":
     main()
