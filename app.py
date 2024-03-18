@@ -29,7 +29,7 @@ def predict(image, model):
 
 
 def main():
-    st.title("Image Classification for Brain Tumor and Pneumonia")
+    st.title("Image Classification for Pneumonia")
 
     # st.write("Upload an image for Brain Tumor:")
     # uploaded_tumor_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"], key="tumor")
