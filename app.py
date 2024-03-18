@@ -3,12 +3,15 @@ from PIL import Image
 import numpy as np
 import tensorflow as tf
 import io
+import cv2
 
 # # Function to load and preprocess the image
 def preprocess_image(img):
-    img = img.resize((224, 224))  # Assuming the input size expected by your model
+    img = cvs.imread(str(img))
+    img = cv2.resize(img,(224, 224))  # Assuming the input size expected by your model
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = img / 255
     img = np.array(img)
-    img = img / 255.0  # Normalize the image
     return img
 
 # # Load your pre-trained model
@@ -40,19 +43,21 @@ def main():
     #     st.write("Brain Tumor image uploaded successfully!")
 
     if uploaded_pneumonia_image is not None:
-        pneumonia_image = Image.open(uploaded_pneumonia_image)
-        st.image(pneumonia_image, caption="Uploaded Pneumonia Image", use_column_width=True)
-        st.write("Pneumonia image uploaded successfully!")
+        # pneumonia_image = Image.open(uploaded_pneumonia_image)
+        # st.image(pneumonia_image, caption="Uploaded Pneumonia Image", use_column_width=True)
+        # st.write("Pneumonia image uploaded successfully!")
         st.write("Classifying...")
 
         model = load_model()
         # Perform prediction
-        prediction = predict(pneumonia_image, model)
+        prediction = predict(uploaded_pneumonia_image, model)
         print(prediction)
         if prediction[0] < 0.5:  # Assuming the first class is brain tumor and second class is pneumonia
             st.write("Prediction: Normal")
         else:
             st.write("Prediction: Pneumonia")
+    else :
+        print("Please upload the correct file extension")
 
 if __name__ == "__main__":
     main()
