@@ -11,7 +11,7 @@ def preprocess_image(img):
     img = Image.open(img)
     img = img.resize((224, 224))  # Assuming the input size expected by your model
     img = img.convert('RGB')
-    img = img / 255
+    img = img / 255.0
     img = np.array(img)
     return img
 
