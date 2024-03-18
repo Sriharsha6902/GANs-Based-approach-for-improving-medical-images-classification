@@ -7,11 +7,10 @@ import cv2
 
 # # Function to load and preprocess the image
 def preprocess_image(img):
-    st.write(img)
     img = Image.open(img)
     img = img.resize((224, 224))  # Assuming the input size expected by your model
-    img = img.convert('RGB')
     img = np.array(img)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = img / 255
     return img
 
