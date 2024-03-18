@@ -7,7 +7,7 @@ import cv2
 
 # # Function to load and preprocess the image
 def preprocess_image(img):
-    img = cvs.imread(str(img))
+    img = cv2.imread(str(img))
     img = cv2.resize(img,(224, 224))  # Assuming the input size expected by your model
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = img / 255
