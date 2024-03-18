@@ -8,7 +8,7 @@ import cv2
 # # Function to load and preprocess the image
 def preprocess_image(img):
     st.write(img)
-    img = cv2.imread(img)
+    img = Image.open(img)
     img = cv2.resize(img,(224, 224))  # Assuming the input size expected by your model
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = img / 255
@@ -24,7 +24,7 @@ def load_model():
 # # Function to make predictions
 def predict(image, model):
     img = preprocess_image(image)
-    img = np.expand_dims(img, axis=0)
+    # img = np.expand_dims(img, axis=0)
     prediction = model.predict(img)
     return prediction
 
