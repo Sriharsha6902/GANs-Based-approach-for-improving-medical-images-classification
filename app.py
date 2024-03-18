@@ -23,7 +23,7 @@ def load_model():
 # # Function to make predictions
 def predict(image, model):
     img = preprocess_image(image)
-    # img = np.expand_dims(img, axis=0)
+    img = np.expand_dims(img, axis=0)
     prediction = model.predict(img)
     return prediction
 
