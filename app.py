@@ -5,7 +5,7 @@ import tensorflow as tf
 
 # # Function to load and preprocess the image
 def preprocess_image(image):
-    img = Image.open(image)
+    img = Image.open(image).convert('RGB')
     img = img.resize((224, 224))  # Assuming the input size expected by your model
     img = np.array(img)
     img = img / 255.0  # Normalize the image
