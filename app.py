@@ -9,7 +9,7 @@ import cv2
 def preprocess_image(img):
     st.write(img)
     img = Image.open(img)
-    img = img.resize(224, 224)  # Assuming the input size expected by your model
+    img = img.resize((224, 224))  # Assuming the input size expected by your model
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = img / 255
     img = np.array(img)
