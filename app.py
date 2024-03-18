@@ -5,7 +5,7 @@ import tensorflow as tf
 
 # # Function to load and preprocess the image
 def preprocess_image(image):
-    img = Image.open(image).convert('RGB')
+    img = Image.open(image)
     img = img.resize((224, 224))  # Assuming the input size expected by your model
     img = np.array(img)
     img = img / 255.0  # Normalize the image
@@ -48,7 +48,7 @@ def main():
         model = load_model()
         # Perform prediction
         prediction = predict(pneumonia_image, model)
-
+        print(prediction)
         if prediction[0] < 0.5:  # Assuming the first class is brain tumor and second class is pneumonia
             st.write("Prediction: Normal")
         else:
