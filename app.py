@@ -52,7 +52,7 @@ def main():
         # Perform prediction
         prediction = predict(uploaded_pneumonia_image, model)
         print(prediction)
-        if prediction[0] == 0:  # Assuming the first class is brain tumor and second class is pneumonia
+        if prediction[0] < 0.85:  # Assuming the first class is brain tumor and second class is pneumonia
             st.write("Prediction: Normal")
         else:
             st.write("Prediction: Pneumonia")
