@@ -14,7 +14,7 @@ def preprocess_image(image):
 # # Load your pre-trained model
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model = tf.keras.models.load_model('classifier_pneumonia_224x224.keras')  # Replace 'your_model_path.h5' with your actual model path
+    model = tf.keras.models.load_model('classifier_pneumonia_224x224.h5')  # Replace 'your_model_path.h5' with your actual model path
     return model
 
 # # Function to make predictions
