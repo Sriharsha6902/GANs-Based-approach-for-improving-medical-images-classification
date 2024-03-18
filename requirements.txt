@@ -1,0 +1,6 @@
+seaborn
+tensorflow==2.10
+opencv-python
+matplotlib
+numpy
+pandas
