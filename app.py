@@ -8,6 +8,7 @@ import io
 def preprocess_image(image):
     with open(image, 'rb') as f:
         img = Image.open(io.BytesIO(f.read()))
+        pass
     img = img.resize((224, 224))  # Assuming the input size expected by your model
     img = np.array(img)
     img = img / 255.0  # Normalize the image
