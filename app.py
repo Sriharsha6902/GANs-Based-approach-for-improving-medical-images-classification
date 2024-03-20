@@ -8,8 +8,8 @@ import cv2
 def preprocess_image(img):
     img = Image.open(img).convert('RGB')
     img = img.resize((224, 224))
-    img = img / 255
     img = np.array(img)
+    img = img / 255
     print(img.shape)
     return img
 
