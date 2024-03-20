@@ -23,7 +23,6 @@ def load_model():
 def predict(image, model):
     img = preprocess_image(image)
     img = np.expand_dims(img, axis=0)
-    print(img.shape)
     prediction = model.predict(img)
     return prediction
 
@@ -46,13 +45,12 @@ def main():
         # pneumonia_image = Image.open(uploaded_pneumonia_image)
         # st.image(pneumonia_image, caption="Uploaded Pneumonia Image", use_column_width=True)
         # st.write("Pneumonia image uploaded successfully!")
-        st.write("Classifying...")
 
         model = load_model()
         # Perform prediction
         prediction = predict(uploaded_pneumonia_image, model)
         y_pred = tf.squeeze(prediction)
-        y_pred = y_pred >= 0.5
+        y_pred = y_pred >= 0.9
         print("Pred: ",y_pred)
         # if y_pred:  # Assuming the first class is brain tumor and second class is pneumonia
         #     st.write("Prediction: Normal")
