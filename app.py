@@ -7,10 +7,12 @@ import tensorflow as tf
 # # Function to load and preprocess the image
 def preprocess_image(img):
     img = Image.open(img)
-    img = img.resize((224, 224))  # Assuming the input size expected by your model
-    img = np.array(img)
-    # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = img.save("img.jpg")
+    img = cv2.imread("img.jpg")
+    img = img.resize((224, 224))
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = img / 255
+    img = np.array(img)
     return img
 
 # # Load your pre-trained model
@@ -52,7 +54,7 @@ def main():
         # Perform prediction
         prediction = predict(uploaded_pneumonia_image, model)
         y_pred = tf.squeeze(prediction)
-        y_pred = y_pred >= 0.9
+        y_pred = y_pred >= 0.5
         print("Pred: ",y_pred)
         # if y_pred:  # Assuming the first class is brain tumor and second class is pneumonia
         #     st.write("Prediction: Normal")
