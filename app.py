@@ -3,7 +3,17 @@ from PIL import Image
 import numpy as np
 import tensorflow as tf
 import cv2
+page_bg_img = '''
+<style>
+body {
+  background-image: linear-gradient(to right, #cceeff 0%, #e6f7ff 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+</style>
+'''
 
+st.markdown(page_bg_img, unsafe_allow_html=True)
 # # Function to load and preprocess the image
 def preprocess_image(img):
     img = Image.open(img).convert('RGB')
