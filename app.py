@@ -7,7 +7,7 @@ import cv2
 # # Function to load and preprocess the image
 def preprocess_image(img):
     img = Image.open(img).convert('RGB')
-    img = resize(img,(224, 224))
+    img = img.resize((224, 224))
     img = img / 255
     img = np.array(img)
     print(img.shape)
