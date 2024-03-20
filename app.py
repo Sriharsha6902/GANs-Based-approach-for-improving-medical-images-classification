@@ -53,7 +53,6 @@ def main():
         prediction = predict(uploaded_pneumonia_image, model)
         y_pred = tf.squeeze(prediction)
         y_pred = y_pred >= 0.5
-        y_pred = np.array(y_pred, dtype = 'int32')
         print(y_pred)
         if y_pred==0:  # Assuming the first class is brain tumor and second class is pneumonia
             st.write("Prediction: Normal")
