@@ -11,7 +11,7 @@ def main():
     image = Image.open(BytesIO(response.content))
 
     # Create columns
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
 
     # Display the image in the left column
     col1.image(image, use_column_width=True)
