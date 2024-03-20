@@ -47,7 +47,7 @@ def main():
     )
 
     # Display the title and file uploader
-    st.header("Upload an image for Pneumonia:")
+    st.header("Upload an image for Pneumonia detection:")
     uploaded_pneumonia_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"], key="pneumonia")
 
     if uploaded_pneumonia_image is not None:
