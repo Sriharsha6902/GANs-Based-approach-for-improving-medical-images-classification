@@ -1,0 +1,35 @@
+[global]
+# By default, Streamlit checks if the Python watchdog module is available and, if not, prints a warning asking for you to install it. The watchdog module is not currently supported on all systems. Therefore, you may want to disable this warning.
+disableWatchdogWarning = false
+
+# Change the type of file watcher used by Streamlit, or turn it off completely.
+fileWatcherType = "auto"
+
+[server]
+# Set the IP address where to serve Streamlit's apps.
+# Default: 'localhost'
+headless = false
+
+# If false, will attempt to open a browser window on start.
+# Default: false unless (1) we are on a Linux box where DISPLAY is unset, or (2) server.liveSave is set.
+runOnSave = false
+
+# Immediately share the app in such a way that enables live monitoring, and post-run analysis.
+# Default: false
+enableCORS = false
+
+# Enables support for Cross-Origin Request Sharing (CORS) protection, as described in that blog post.
+# Default: true
+enableXsrfProtection = true
+
+# If false, prevents Streamlit from being served from anything but localhost.
+# Default: true
+maxUploadSize = 200
+
+[theme]
+base = "light"
+primaryColor = "#E694FF"
+backgroundColor = "#00172B"
+secondaryBackgroundColor = "#0083B8"
+textColor = "#DCDCDC"
+font = "sans serif"
