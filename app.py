@@ -6,20 +6,17 @@ import cv2
 
 # # Function to load and preprocess the image
 def preprocess_image(img):
-    # img = Image.open(img)
-    # img = np.array(img)
-    image_array = np.asarray(bytearray(img.read()), dtype=np.uint8)
-    image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
-    img=np.array(img)
-    img = cv2.resize(img,(224, 224))
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = Image.open(img).convert('RGB')
+    img = resize(img,(224, 224))
     img = img / 255
+    img = np.array(img)
+    print(img.shape)
     return img
 
 # # Load your pre-trained model
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model = tf.keras.models.load_model('classifier_pneumonia_224x224.h5')  # Replace 'your_model_path.h5' with your actual model path
+    model = tf.keras.models.load_model('classifier_pneumonia_224x224.h5')
     return model
 
 # # Function to make predictions
@@ -32,33 +29,17 @@ def predict(image, model):
 
 def main():
     st.title("Image Classification for Pneumonia")
-
-    # st.write("Upload an image for Brain Tumor:")
-    # uploaded_tumor_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"], key="tumor")
-
     st.write("Upload an image for Pneumonia:")
     uploaded_pneumonia_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"], key="pneumonia")
-
-    # if uploaded_tumor_image is not None:
-    #     tumor_image = Image.open(uploaded_tumor_image)
-    #     st.image(tumor_image, caption="Uploaded Brain Tumor Image", use_column_width=True)
-    #     st.write("Brain Tumor image uploaded successfully!")
-
     if uploaded_pneumonia_image is not None:
-        # pneumonia_image = Image.open(uploaded_pneumonia_image)
-        # st.image(pneumonia_image, caption="Uploaded Pneumonia Image", use_column_width=True)
-        # st.write("Pneumonia image uploaded successfully!")
-
         model = load_model()
-        # Perform prediction
         prediction = predict(uploaded_pneumonia_image, model)
         y_pred = tf.squeeze(prediction)
-        y_pred = y_pred >= 0.9
-        print("Pred: ",y_pred)
-        # if y_pred:  # Assuming the first class is brain tumor and second class is pneumonia
-        #     st.write("Prediction: Normal")
-        # else:
-        #     st.write("Prediction: Pneumonia")
+        y_pred = y_pred >= 0.855
+        if y_pred:  # Assuming the first class is brain tumor and second class is pneumonia
+            st.write("Prediction: Normal")
+        else:
+            st.write("Prediction: Pneumonia")
     else :
         st.write("Please upload the correct file extension")
 
