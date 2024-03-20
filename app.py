@@ -2,15 +2,14 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 import tensorflow as tf
-import io
-import cv2
+# import cv2
 
 # # Function to load and preprocess the image
 def preprocess_image(img):
     img = Image.open(img)
     img = img.resize((224, 224))  # Assuming the input size expected by your model
     img = np.array(img)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = img / 255
     return img
 
@@ -53,7 +52,7 @@ def main():
         # Perform prediction
         prediction = predict(uploaded_pneumonia_image, model)
         y_pred = tf.squeeze(prediction)
-        y_pred = y_pred >= 0.852
+        y_pred = y_pred >= 0.9
         print("Pred: ",y_pred)
         # if y_pred:  # Assuming the first class is brain tumor and second class is pneumonia
         #     st.write("Prediction: Normal")
