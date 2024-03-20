@@ -3,6 +3,7 @@ import requests
 from PIL import Image
 import numpy as np
 import tensorflow as tf
+from io import BytesIO
 
 st.set_page_config(page_icon=":sunny:", layout="wide")
 
