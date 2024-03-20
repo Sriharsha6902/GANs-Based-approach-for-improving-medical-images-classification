@@ -38,9 +38,9 @@ def main():
         print(y_pred)
         y_pred = y_pred >= 0.855
         if y_pred:  # Assuming the first class is brain tumor and second class is pneumonia
-            st.write("Prediction: Normal")
-        else:
             st.write("Prediction: Pneumonia")
+        else:
+            st.write("Prediction: Normal")
     else :
         st.write("Please upload the correct file extension")
 
