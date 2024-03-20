@@ -54,7 +54,7 @@ def main():
         y_pred = tf.squeeze(prediction)
         y_pred = y_pred >= 0.5
         print(y_pred)
-        if y_pred==0:  # Assuming the first class is brain tumor and second class is pneumonia
+        if y_pred<0.5:  # Assuming the first class is brain tumor and second class is pneumonia
             st.write("Prediction: Normal")
         else:
             st.write("Prediction: Pneumonia")
