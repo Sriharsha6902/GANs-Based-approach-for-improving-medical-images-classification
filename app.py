@@ -7,11 +7,10 @@ import cv2
 # # Function to load and preprocess the image
 def preprocess_image(img):
     img = Image.open(img)
-    img = cv2.imread(img)
-    img = img.resize((224, 224))
+    img = np.array(img)
+    img = cv2.resize(img,(224, 224))
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = img / 255
-    img = np.array(img)
     return img
 
 # # Load your pre-trained model
