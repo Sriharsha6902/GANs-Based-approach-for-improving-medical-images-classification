@@ -24,6 +24,7 @@ def load_model():
 def predict(image, model):
     img = preprocess_image(image)
     img = np.expand_dims(img, axis=0)
+    print(img.shape)
     prediction = model.predict(img)
     return prediction
 
