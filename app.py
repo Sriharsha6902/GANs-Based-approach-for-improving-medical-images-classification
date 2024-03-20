@@ -49,8 +49,8 @@ def main():
     col1.image(image, use_column_width=True)
 
     # Display the title and file uploader in the right column
-    st.write("Upload an image for Pneumonia:")
-    uploaded_pneumonia_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"], key="pneumonia")
+    col2.header("Upload an image for Pneumonia:")
+    uploaded_pneumonia_image = col2.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"], key="pneumonia")
 
     if uploaded_pneumonia_image is not None:
         model = load_model()
@@ -59,9 +59,9 @@ def main():
         print(y_pred)
         y_pred = y_pred >= 0.855
         if y_pred:  # Assuming the first class is brain tumor and second class is pneumonia
-            st.write("Prediction: Pneumonia")
+            col2.write("Prediction: Pneumonia")
         else:
-            st.write("Prediction: Normal")
+            col2.write("Prediction: Normal")
     else :
         st.write("Please upload the correct file extension")
         
