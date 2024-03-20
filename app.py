@@ -10,10 +10,10 @@ def preprocess_image(img):
     # img = np.array(img)
     image_array = np.asarray(bytearray(img.read()), dtype=np.uint8)
     image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
+    img=np.array(img)
     img = cv2.resize(img,(224, 224))
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = img / 255
-    img=np.array(img)
     return img
 
 # # Load your pre-trained model
