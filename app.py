@@ -55,6 +55,7 @@ def main():
             model = load_model()
             prediction = predict(uploaded_pneumonia_image, model)
             y_pred = tf.squeeze(prediction)
+            print(y_pred)
             y_pred = y_pred >= 0.88
             if y_pred:  # Assuming the first class is brain tumor and second class is pneumonia
                 st.success("Prediction: Pneumonia")
