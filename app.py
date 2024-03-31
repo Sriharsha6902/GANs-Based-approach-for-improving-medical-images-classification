@@ -130,7 +130,7 @@ def main():
     uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"], key="medical_condition")
 
     if uploaded_image is not None:
-        task = st.sidebar.selectbox("Select Task", ["Pneumonia Detection", "Alzheimer's Detection"])
+        task = st.selectbox("Select Detection Task", ["Pneumonia Detection", "Alzheimer's Detection"])
 
         if task == "Pneumonia Detection":
             st.subheader("Pneumonia Detection:")
