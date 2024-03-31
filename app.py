@@ -147,7 +147,7 @@ def main():
         elif task == "Alzheimer's Detection":
             st.subheader("Alzheimer's Detection:")
             with st.spinner('Predicting...'):
-                alzheimers_model = load_alzheimers_model(")
+                alzheimers_model = load_alzheimers_model()
                 alzheimers_prediction = predict_alzheimers(uploaded_image, alzheimers_model)
                 # Add your logic for Alzheimer's prediction here
                 st.success("Prediction: [Add Alzheimer's prediction logic here]")
