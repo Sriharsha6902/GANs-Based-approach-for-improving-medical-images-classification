@@ -108,52 +108,53 @@ def predict_alzheimers(image, model):
 def main():
     st.title("Medical Condition Detection App")
 
-    # Load the image from the URL
-    response = requests.get('https://i.postimg.cc/mgcdTtQm/78205958-d81f-434a-8a70-7f5a00f12645.jpg')
-    image = Image.open(BytesIO(response.content))
+    task = st.selectbox("Select Detection Task", ["Select Task", "Pneumonia Detection", "Alzheimer's Detection"])
 
-    # Set the image as the background using custom CSS
-    st.markdown(
-        f"""
-        <style>
-        .reportview-container {{
-            background: url(data:image/png;base64,{image});
-            background-size: cover;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+    if task != "Select Task":
+        # Load the image from the URL
+        response = requests.get('https://i.postimg.cc/mgcdTtQm/78205958-d81f-434a-8a70-7f5a00f12645.jpg')
+        image = Image.open(BytesIO(response.content))
 
-    # Display the title and file uploader
-    st.header("Upload an image for medical condition detection:")
-    uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"], key="medical_condition")
+        # Set the image as the background using custom CSS
+        st.markdown(
+            f"""
+            <style>
+            .reportview-container {{
+                background: url(data:image/png;base64,{image});
+                background-size: cover;
+            }}
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
 
-    if uploaded_image is not None:
-        task = st.selectbox("Select Detection Task", ["Pneumonia Detection", "Alzheimer's Detection"])
+        # Display the title and file uploader
+        st.header("Upload an image for medical condition detection:")
+        uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"], key="medical_condition")
 
-        if task == "Pneumonia Detection":
-            st.subheader("Pneumonia Detection:")
-            with st.spinner('Predicting...'):
-                pneumonia_model = load_pneumonia_model()
-                pneumonia_prediction = predict_pneumonia(uploaded_image, pneumonia_model)
-                pneumonia_pred = tf.squeeze(pneumonia_prediction)
-                pneumonia_pred = pneumonia_pred >= 0.879
-                if pneumonia_pred:  
-                    st.success("Prediction: Pneumonia")
-                else:
-                    st.success("Prediction: Normal")
+        if uploaded_image is not None:
+            if task == "Pneumonia Detection":
+                st.subheader("Pneumonia Detection:")
+                with st.spinner('Predicting...'):
+                    pneumonia_model = load_pneumonia_model()
+                    pneumonia_prediction = predict_pneumonia(uploaded_image, pneumonia_model)
+                    pneumonia_pred = tf.squeeze(pneumonia_prediction)
+                    pneumonia_pred = pneumonia_pred >= 0.879
+                    if pneumonia_pred:  
+                        st.success("Prediction: Pneumonia")
+                    else:
+                        st.success("Prediction: Normal")
 
-        elif task == "Alzheimer's Detection":
-            st.subheader("Alzheimer's Detection:")
-            with st.spinner('Predicting...'):
-                alzheimers_model = load_alzheimers_model()
-                alzheimers_prediction = predict_alzheimers(uploaded_image, alzheimers_model)
-                # Add your logic for Alzheimer's prediction here
-                st.success("Prediction: [Add Alzheimer's prediction logic here]")
+            elif task == "Alzheimer's Detection":
+                st.subheader("Alzheimer's Detection:")
+                with st.spinner('Predicting...'):
+                    alzheimers_model = load_alzheimers_model()
+                    alzheimers_prediction = predict_alzheimers(uploaded_image, alzheimers_model)
+                    # Add your logic for Alzheimer's prediction here
+                    st.success("Prediction: [Add Alzheimer's prediction logic here]")
 
-    else :
-        st.write("Please upload the correct file extension")
+        else:
+            st.write("Please upload the correct file extension")
 
 if __name__ == "__main__":
     main()
