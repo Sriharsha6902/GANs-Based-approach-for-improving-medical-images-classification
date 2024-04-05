@@ -69,7 +69,7 @@ def main():
                     alzheimers_model = load_alzheimers_model()
                     alzheimers_prediction = predict_alzheimers(uploaded_image, alzheimers_model)
                     pred = np.argmax(alzheimers_prediction,axis=1)
-                    st.write(alz_classes[pred])
+                    st.write("HI")
 
         else:
             st.write("Please upload the correct file extension")
