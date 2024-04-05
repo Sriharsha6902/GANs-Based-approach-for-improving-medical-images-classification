@@ -54,6 +54,7 @@ def main():
                 with st.spinner('Predicting...'):
                     pneumonia_model = load_pneumonia_model()
                     pneumonia_prediction = predict_pneumonia(uploaded_image, pneumonia_model)
+                    print(pneumonia_prediction)
                     pneumonia_pred = tf.squeeze(pneumonia_prediction)
                     pneumonia_pred = pneumonia_pred >= 0.879
                     if pneumonia_pred:  
