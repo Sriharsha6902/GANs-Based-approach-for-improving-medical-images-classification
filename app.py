@@ -33,7 +33,7 @@ def preprocess_img_alz(img):
     image = img.resize(img_size)
     image_array = np.array(image)
     preprocessed_image = image_array.reshape(1, img_size[0], img_size[1], channels)
-    return image_array
+    return preprocessed_image
 
 def predict_pneumonia(image, model):
     img = preprocess_image(image)
