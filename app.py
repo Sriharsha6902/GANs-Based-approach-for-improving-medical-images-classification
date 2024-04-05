@@ -38,6 +38,7 @@ def preprocess_img_alz(img):
 def predict_pneumonia(image, model):
     img = preprocess_image(image)
     img = np.expand_dims(img, axis=0)
+    st.image(img)
     prediction = model.predict(img)
     return prediction
 
