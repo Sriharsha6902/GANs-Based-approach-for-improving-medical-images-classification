@@ -26,7 +26,7 @@ def preprocess_image(img):
     return img
     
 def preprocess_img_alz(img):
-    img = Image.open(img))
+    img = Image.open(img)
     img_size = (224, 224)
     channels = 3
     st.image(img)
