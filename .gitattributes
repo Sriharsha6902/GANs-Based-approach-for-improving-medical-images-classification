@@ -3,3 +3,4 @@ classifier_pneumonia_224x224.keras filter=lfs diff=lfs merge=lfs -text
 classifier_pneumonia_224x224.h5 filter=lfs diff=lfs merge=lfs -text
 Classifier_pneumonia_syn.h5 filter=lfs diff=lfs merge=lfs -text
 Classifier_Alzheimer_syn.h5 filter=lfs diff=lfs merge=lfs -text
+Classifier_Alzheimer.h5 filter=lfs diff=lfs merge=lfs -text
