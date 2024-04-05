@@ -70,8 +70,14 @@ def main():
                     alzheimers_prediction = predict_alzheimers(uploaded_image, alzheimers_model)
                     print(alzheimers_prediction)
                     pred = np.argmax(alzheimers_prediction,axis=1)
-                    print(pred)
-                    st.write("HI")
+                    if pred==0:
+                        st.write("Prediction: Mild_Demented")
+                    elif pred==1:
+                        st.write("Prediction: Moderate_Demented")
+                    elif pred==2:
+                        st.write("Prediction: Non_Demented")
+                    else:
+                        st.write("Prediction: Very_Mild_Demented")
 
         else:
             st.write("Please upload the correct file extension")
