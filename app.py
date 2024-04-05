@@ -56,7 +56,7 @@ def main():
                     pneumonia_prediction = predict_pneumonia(uploaded_image, pneumonia_model)
                     print(pneumonia_prediction)
                     pneumonia_pred = tf.squeeze(pneumonia_prediction)
-                    pneumonia_pred = pneumonia_pred >= 0.879
+                    pneumonia_pred = pneumonia_pred >= 0.6
                     if pneumonia_pred:  
                         st.success("Prediction: Pneumonia")
                     else:
@@ -69,7 +69,7 @@ def main():
                     alzheimers_model = load_alzheimers_model()
                     alzheimers_prediction = predict_alzheimers(uploaded_image, alzheimers_model)
                     pred = np.argmax(alzheimers_prediction,axis=1)
-                    st.success(alz_classes[pred])
+                    st.write(alz_classes[pred])
 
         else:
             st.write("Please upload the correct file extension")
