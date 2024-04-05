@@ -28,7 +28,6 @@ def preprocess_image(img):
 def preprocess_img_alz(img):
     img_size = (224, 224)
     channels = 3
-    color = 'rgb'
     image = img.resize(img_size)
     image_array = np.array(image)
     preprocessed_image = preprocessed_image.reshape(1, img_size[0], img_size[1], channels)
