@@ -15,7 +15,7 @@ def load_pneumonia_model():
 
 @st.cache(allow_output_mutation=True)
 def load_alzheimers_model():
-    model = tf.keras.models.load_model('Classifier_Alzheimers_syn.h5')
+    model = tf.keras.models.load_model('Classifier_Alzheimer_syn.h5')
     return model
 
 def preprocess_image(img):
