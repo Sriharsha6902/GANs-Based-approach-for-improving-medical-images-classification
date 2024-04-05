@@ -15,7 +15,7 @@ def load_pneumonia_model():
 
 @st.cache(allow_output_mutation=True)
 def load_alzheimers_model():
-    model = tf.keras.models.load_model('classifier_alzheimers.h5')
+    model = tf.keras.models.load_model('Classifier_Alzheimers_syn.h5')
     return model
 
 def preprocess_image(img):
@@ -40,7 +40,7 @@ def predict_alzheimers(image, model):
 def main():
     st.title("Medical Condition Detection App")
 
-    task = st.selectbox("Select Detection Task", ["Select Task", "Pneumonia Detection", "Alzheimer's Detection"])
+    task = st.selectbox("Select Detection Task", ["Select Task", "Pneumonia Detection", "Alzheimer's Disease Detection"])
 
     if task != "Select Task":
 
@@ -61,13 +61,14 @@ def main():
                     else:
                         st.success("Prediction: Normal")
 
-            elif task == "Alzheimer's Detection":
+            elif task == "Alzheimer's Disease Detection":
+                alz_classes=["Mild_Demented","Moderate_Demented","Non_Demented","Very_Mild_Demented"]
                 st.subheader("Alzheimer's Detection:")
                 with st.spinner('Predicting...'):
                     alzheimers_model = load_alzheimers_model()
                     alzheimers_prediction = predict_alzheimers(uploaded_image, alzheimers_model)
-                    # Add your logic for Alzheimer's prediction here
-                    st.success("Prediction: [Add Alzheimer's prediction logic here]")
+                    pred = np.argmax(alzheimers_prediction,axis=1)
+                    st.success("Prediction: {alz_classes[pred]}")
 
         else:
             st.write("Please upload the correct file extension")
