@@ -56,7 +56,7 @@ def main():
                     pneumonia_prediction = predict_pneumonia(uploaded_image, pneumonia_model)
                     print(pneumonia_prediction)
                     pneumonia_pred = tf.squeeze(pneumonia_prediction)
-                    pneumonia_pred = pneumonia_pred >= 0.6
+                    pneumonia_pred = pneumonia_pred >= 0.5
                     if pneumonia_pred:  
                         st.success("Prediction: Pneumonia")
                     else:
