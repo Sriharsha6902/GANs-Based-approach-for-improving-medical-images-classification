@@ -40,7 +40,7 @@ def predict_pneumonia(image, model):
     return prediction
 
 def predict_alzheimers(image, model):
-    img = preprocess_image_alz(image)
+    img = preprocess_img_alz(image)
     prediction = model.predict(img)
     return prediction
 
