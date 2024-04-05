@@ -10,7 +10,7 @@ st.set_page_config(page_title="Medical Condition Detection App", page_icon=":mic
 
 @st.cache(allow_output_mutation=True)
 def load_pneumonia_model():
-    model = tf.keras.models.load_model('classifier_pneumonia_syn.h5')
+    model = tf.keras.models.load_model('Classifier_pneumonia_syn.h5')
     return model
 
 @st.cache(allow_output_mutation=True)
