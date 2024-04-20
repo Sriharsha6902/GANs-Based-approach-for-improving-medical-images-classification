@@ -24,7 +24,7 @@ The objective of this project is to enhance the performance of medical image cla
 1. Clone the repository: `git clone https://github.com/Sriharsha6902/GANs-Based-approach-for-improving-medical-images-classification.git`
 2. Navigate to the project directory
 3. Install dependencies: `pip install -r requirements.txt`
-4. Execute the notebook to preprocess data, train the GAN, and train the classification model.
+4. Execute the notebook to preprocess data, train the ACGAN, and train the classification model.
 
 ## Conclusion
 
